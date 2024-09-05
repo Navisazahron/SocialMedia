@@ -1,0 +1,960 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+    --color-white: hsl(252, 30%, 100%);
+    --color-light: hsl(252, 30%, 95%);
+    --color-gray: hsl(252, 15%, 65%);
+    --color-primary: hsl(252, 75%, 60%);
+    --color-secondary: hsl(252, 100%, 90%);
+    --color-success: hsl(120, 95%, 65%);
+    --color-danger: hsl(0, 95%, 65%);
+    --color-dark: hsl(252, 30%, 17%);
+    --color-black: hsl(252, 30%, 10%);
+
+
+    --border-radius:2rem;
+    --card-border-radius:1rem;
+    --btn-padding:0.6rem 1rem;
+    --search-padding:0.6rem 1rem;
+    --card-padding:1rem;
+
+    --sticky-top-left: 5.4rem;
+    --sticky-top-right:-18rem;
+ }
+ 
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+}
+body{
+    font-family: "Poppins", sans-serif;
+    color: var(--color-dark);
+    background: var(--color-light);
+    overflow-x: hidden;
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.create {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Mengatur jarak antar elemen */
+}
+
+.profile-photo {
+    width: 2.7rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+.btn{
+    display: inline-block;
+    padding: var(--btn-padding);
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 300ms ease;
+    font-size: 0.9rem;
+}
+
+.btn:hover{
+    opacity: 0.8;
+}
+
+.btn-primary{
+    background: var(--color-primary);
+    color: white;
+}
+
+.text-bold{
+    font-weight: 500;
+}
+
+.text-muted{
+    color: var(--color-gray);
+}
+
+nav{
+    width: 100%;
+    background: var(--color-white);
+    padding: 0.7rem 0;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+nav .container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5rem; /* Menambahkan padding bawah pada kontainer navigasi */
+}
+
+nav .search-bar {
+    background: var(--color-light);
+    border-radius: var(--border-radius);
+    padding: var(--search-padding);
+}
+
+nav .search-bar input[type="search"] {
+    background: transparent;
+    width: 30vw; /* Anda bisa menggunakan px atau % untuk responsivitas */
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-dark);
+}
+
+
+nav .search-bar input[type="search"]::placeholder{
+    color: var(--color-gray);
+}
+
+nav .create{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.profile-photo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+main .container {
+    display: grid;
+    grid-template-columns: 18vw auto 20vw; /* Mengatur kolom dengan persentase atau nilai tetap */
+    column-gap: 2rem;
+    position: relative;
+}
+main .container .left{
+    height: max-content;
+    position: sticky;
+    top: var(--sticky-top-left);
+}
+
+main .container .left .profile {
+    padding: var(--card-padding);
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    width: 100%; /* Menyesuaikan lebar sidebar */
+    max-width: 214px; /* Menambahkan batas maksimal lebar */
+    margin-top: 3rem;
+}
+
+
+.left .sidebar {
+    margin-top: 1rem;
+    padding: var(--card-padding); /* Tambahkan padding agar konsisten dengan profile */
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    width: 100%; /* Pastikan lebar sidebar sama dengan profile */
+    box-sizing: border-box; /* Memastikan padding dimasukkan dalam lebar */
+}
+.left .sidebar .menu-item {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    cursor: pointer;
+    transition: all 300ms ease;
+    position: relative;
+}
+
+.left .sidebar .menu-item:hover {
+    background: var(--color-light);
+}
+
+.left .sidebar i {
+    font-size: 1.4rem;
+    color: var(--color-gray);
+    margin-left: 2rem;
+    position: relative;
+}
+
+.left  .sidebar i .notifications-count {
+    background: var(--color-danger);
+    color: white;
+    font-size: 0.7rem;
+    width: fit-content;
+    border-radius: 0.8rem;
+    padding: 0.1rem 0.4rem;
+    position: absolute;
+    top: -0.2rem;
+    right: -0.3rem;
+}
+
+.left .sidebar h3{
+    margin-left: 1.5rem;
+    font-size: 1rem;
+}
+
+.left .sidebar .active{
+    background: var(--color-light);
+}
+
+.left .sidebar .active i,
+.left .sidebar .active h3{
+     color: var(--color-primary);
+}
+
+.left .sidebar .active::before{
+    content: "";
+    display: block;
+    width: 0.5rem;
+    height: 100%;
+    position: absolute;
+    background: var(--color-primary);
+}
+
+.left .sidebar .menu-item:first-child.active{
+    border-top-left-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+.left .sidebar .menu-item:last-child.active{
+    border-bottom-left-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+.left .btn{
+    margin-top: 1rem;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.left .notifications-popup{
+    position: absolute;
+    top: 0;
+    left: 110%;
+    width: 30rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60%, 25%);
+    z-index: 8;
+    display: none; /* Ini memastikan popup tersembunyi secara default */
+    visibility: hidden; /* Menyembunyikan popup saat tidak aktif */
+}
+
+.left .notifications-popup {
+    position: absolute;
+    top: 0;
+    left: 110%;
+    width: 30rem;
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60%, 25%);
+    z-index: 8;
+    display: none; /* Popup disembunyikan secara default */
+}
+
+.left .notifications-popup::before {
+    content: "";
+    width: 1.2rem;
+    height: 1.2rem;
+    display: block;
+    background: var(--color-white);
+    position: absolute;
+    left: -0.6rem;
+    transform: rotate(45deg);
+}
+
+.left .notifications-popup > div {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.left .notifications-popup small {
+    display: block;
+}
+
+
+.midle .storis {
+    display: flex;
+    justify-content: space-between;
+    height: 12rem;
+    gap: 0.5rem;
+    margin-top: 8rem;
+}
+
+.midle .storis .storyy {
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    font-size: 0.75rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.midle .storis .storyy::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    position: absolute;
+    bottom: 0;
+}
+
+
+.midle .storis .storyy .profile-photo {
+    width: 2.5rem; /* Mengubah ukuran lebar foto profil */
+    height: 2.5rem; /* Mengubah ukuran tinggi foto profil */
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 0.5rem; /* Jarak antara foto dan teks */
+}
+
+.midle .storis .storyy .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.midle .storis .storyy .name {
+    margin: 0; /* Menghapus margin default */
+    text-align: center;
+    z-index: 2;
+
+}
+ 
+ .midle .storis .storyy:nth-child(1){
+     background: url("./img/story-1.jpg")
+     no-repeat center center/cover;
+ }
+ 
+ .midle .storis .storyy:nth-child(2){
+     background: url("./img/story-2.jpg")
+     no-repeat center center/cover;
+ }
+ .midle .storis .storyy:nth-child(3){
+     background: url("./img/story-3.jpg")
+     no-repeat center center/cover;
+ }
+ .midle .storis .storyy:nth-child(4){
+     background: url("./img/story-4.jpg")
+     no-repeat center center/cover;
+ }
+ .midle .storis .storyy:nth-child(5){
+     background: url("./img/story-5.jpg")
+     no-repeat center center/cover;
+ }
+ .midle .storis .storyy:nth-child(6){
+     background: url("./img/story-6.jpg")
+     no-repeat center center/cover;
+ }
+ .midle .stories .storyy:nth-child(7){
+     background: url("./img/profile-19.jpg")
+     no-repeat center center/cover;
+ }
+ .midle .storis .storyy:nth-child(8){
+     background: url("./img/profile-18.jpg")
+     no-repeat center center/cover;
+ }
+
+.midle .storyy .profile-photo{
+    width: 2rem;
+    height: 2rem;
+    align-self: start;
+    border: 3px solid var(--color-primary);
+}
+
+.midle .create-post {
+    width: 93%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    background: var(--color-white);
+    padding: 0.4rem var(--card-padding);
+    border-radius: var(--border-radius);
+}
+
+.midle .create-post input[type="text"] {
+    justify-self: start;
+    width: 100%;
+    padding-left: 1rem;
+    background: transparent;
+    color: var(--color-dark);
+    margin-right: 1rem;
+    border: none; /* Pastikan tidak ada border yang mengganggu tampilan */
+    outline: none; /* Menghapus outline default */
+}
+.create-post .profile-photo {
+    width: 2.5rem; /* Ubah ukuran sesuai keinginan */
+    height: 2.5rem; /* Ubah ukuran sesuai keinginan */
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0; /* Untuk memastikan elemen ini tidak mengecil saat container menyusut */
+}
+
+.create-post .profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar tetap proporsional dan wajah terlihat */
+}
+
+
+.midle .feeds .feed{
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.midle .feed .head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.midle .feed .user{
+    display: flex;
+   gap: 1rem;
+}
+
+.midle .feed .photo{
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    margin: 0.7rem 0;
+}
+
+.midle .feed .action-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    margin: 0.6rem;
+}
+
+
+.midle .liked-by{
+    display: flex;
+}
+
+.midle .liked-by span{
+    width: 1.4rem;
+    height: 1.4rem;
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--color-white);
+    margin-left: -0.6rem;
+}
+
+.midle .liked-by span:first-child{
+    margin: 0;
+}
+
+.midle .liked-by p{
+    margin-left: 0.5rem;
+}
+
+
+.right {
+    position:absolute; /* Posisi absolute untuk menempatkan elemen secara spesifik */
+    top: 120px; /* Menempatkan elemen lebih ke atas, sesuaikan nilai ini */
+    right: -90px; /* Menempatkan elemen lebih ke kanan, sesuaikan nilai ini */
+    width: 300px; /* Atur lebar sesuai kebutuhan */
+    background-color: #f4f4f4; /* Warna background untuk bagian kanan */
+    padding: 20px; /* Padding untuk memberikan ruang di dalam elemen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan bayangan */
+    border-radius: 10px; /* Menambahkan border radius untuk tampilan yang lebih halus */
+    z-index: -100; /* Memastikan elemen ini berada di atas elemen lain */
+}
+
+.messagess, .friend-requests {
+    margin-bottom: 20px; /* Menambahkan margin bawah untuk memberi jarak antara elemen */
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between; /* Untuk memisahkan teks dan ikon */
+    align-items: center;
+    margin-bottom: 10px; /* Margin bawah untuk ruang antara heading dan konten di bawahnya */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Ruang antara search bar dan konten di bawahnya */
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc; /* Border abu-abu */
+    margin-left: 10px; /* Ruang antara ikon search dan input */
+}
+
+.categoryy {
+    display: flex;
+    justify-content: space-between; /* Untuk mendistribusikan kategori secara merata */
+    margin-bottom: 15px;
+}
+
+.categoryy h6 {
+    cursor: pointer; /* Mengubah cursor menjadi pointer saat dihover */
+}
+
+.categoryy .active {
+    color: #007bff; /* Warna biru untuk kategori aktif */
+}
+
+.messagee {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Ruang antara setiap pesan */
+}
+
+.messagee .profile-photo img {
+    width: 2rem; /* Ukuran gambar lebih kecil */
+    height: 2rem;
+    border-radius: 50%; /* Memastikan gambar bulat */
+    margin-right: 1rem; /* Ruang antara foto profil dan pesan */
+    object-fit: cover; /* Memastikan gambar tetap proporsional dalam lingkaran */
+}
+
+.profile-photo {
+    position: relative; /* Agar elemen .active diposisikan relatif terhadap .profile-photo */
+}
+
+.profile-photo .active {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%; /* Membuat elemen menjadi bulat */
+    border: 3px solid var(--color-white); /* Warna border sesuai variabel */
+    background: var(--color-success); /* Warna latar belakang sesuai variabel */
+    position: absolute; /* Menempatkan elemen secara absolut */
+    bottom: 0; /* Menempatkan elemen di bagian bawah elemen induk */
+    right: 0; /* Menempatkan elemen di sisi kanan elemen induk */
+    z-index: 10; /* Memastikan elemen berada di atas elemen lain */
+}
+
+
+
+.message-body h5 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.message-body p {
+    margin: 0;
+    color: #777; /* Warna teks muted */
+    font-size: 14px;
+}
+
+.friend-requests {
+    position: absolute; /* Menggunakan posisi absolut untuk menempatkan di luar kotak messages */
+    top: 33rem; /* Jarak dari atas kotak messages, sesuaikan sesuai kebutuhan */
+    right: -1px; /* Menggeser kotak lebih ke kiri dari sebelumnya */
+    width: 300px; /* Atur lebar kotak request */
+    background-color: #ffffff;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 10; /* Memastikan kotak request berada di atas elemen lain */
+}
+
+
+.friend-requests .request {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Membuat tombol accept dan decline berada di sebelah kanan */
+    margin-bottom: 15px;
+}
+
+.friend-requests .profile-photo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.friend-requests .info {
+    display: flex;
+    align-items: center;
+}
+
+.friend-requests .action button {
+    margin-left: 10px; /* Ruang antara tombol accept dan decline */
+}
+
+.friend-requests .action .btn {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #007bff; /* Border biru */
+    background-color: #007bff; /* Warna background biru untuk tombol accept */
+    color: #fff; /* Warna teks putih */
+    cursor: pointer; /* Mengubah cursor menjadi pointer */
+}
+
+.friend-requests .action .btn-ptimary {
+    background-color: #007bff;
+    color: white;
+}
+
+.friend-requests .action .btn {
+    background-color: #f4f4f4; /* Warna background abu-abu untuk tombol decline */
+    color: #333; /* Warna teks hitam */
+    border: none;
+}
+
+
+.profile-photo {
+    width: 3rem; /* Atur ukuran lebar foto profil */
+    height: 3rem; /* Atur ukuran tinggi foto profil */
+    border-radius: 50%; /* Membuat gambar menjadi lingkaran */
+    overflow: hidden; /* Menyembunyikan bagian gambar yang melebihi ukuran div */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Menyelaraskan gambar di tengah */
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Menjaga proporsi gambar agar sesuai */
+}
+
+.right .friend-requests {
+    margin-top: 1rem; /* Jarak antara friend-requests dengan elemen di atasnya */
+    background: var(--color-white); /* Latar belakang putih untuk kotak request */
+    padding: 1rem; /* Padding di dalam kotak friend-requests */
+    border-radius: var(--card-border-radius); /* Radius border untuk kotak request */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan kotak untuk efek kedalaman */
+}
+
+/* Styling untuk judul kotak friend-requests */
+.right .friend-requests h4 {
+    color: var(--color-gray); /* Warna teks judul */
+    margin: 0 0 1rem 0; /* Jarak bawah untuk judul */
+}
+
+/* Styling untuk setiap request */
+.right .request {
+    background: var(--color-white); /* Latar belakang putih untuk setiap request */
+    padding: var(--card-padding); /* Padding di dalam kotak request */
+    border-radius: var(--card-border-radius); /* Radius border untuk request */
+    margin-bottom: 0.7rem; /* Jarak antara setiap request */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Bayangan kotak request untuk efek kedalaman */
+    display: flex; /* Menyusun konten secara horizontal */
+    flex-direction: column; /* Menyusun konten secara vertikal */
+}
+
+/* Styling untuk info dalam setiap request */
+.right .request .info {
+    display: flex; /* Menyusun konten secara horizontal */
+    gap: 1rem; /* Jarak antara foto profil dan informasi */
+    margin-bottom: 1rem; /* Jarak bawah untuk info */
+}
+
+/* Styling untuk foto profil dalam setiap request */
+.right .request .profile-photo {
+    position: relative; /* Untuk posisi absolute dari elemen lain jika diperlukan */
+    width: 3rem; /* Ukuran foto profil */
+    height: 3rem; /* Ukuran foto profil */
+}
+
+.right .request .profile-photo img {
+    width: 100%; /* Menyesuaikan ukuran gambar dengan kontainer */
+    height: 100%; /* Menyesuaikan ukuran gambar dengan kontainer */
+    border-radius: 50%; /* Membuat gambar bulat */
+    object-fit: cover; /* Memastikan gambar mengisi kotak tanpa terdistorsi */
+}
+
+/* Styling untuk bagian informasi dalam setiap request */
+.right .request > div {
+    flex: 1; /* Mengambil sisa ruang yang tersedia */
+}
+
+/* Styling untuk tombol aksi */
+.right .request .action {
+    display: flex; /* Menyusun tombol secara horizontal */
+    gap: 1rem; /* Jarak antara tombol */
+}
+
+/* Styling untuk tombol aksi */
+
+
+/* Styling untuk tombol dengan kelas btn-primary */
+.right .request .action .btn.btn-primary {
+    background-color: var(--color-primary); /* Warna latar belakang tombol utama */
+    color: var(--color-white); /* Warna teks tombol utama */
+}
+
+/* Styling untuk tombol pada hover */
+.right .request .action .btn:hover {
+    background-color: #e2e6ea; /* Warna latar belakang saat hover */
+    color: #000; /* Warna teks saat hover */
+}
+/* Styling umum untuk tombol */
+.btn {
+    padding: 0.5rem 1rem; /* Padding tombol */
+    border: none; /* Menghapus border default */
+    border-radius: var(--card-border-radius); /* Radius border untuk tombol */
+    cursor: pointer; /* Menunjukkan bahwa tombol dapat diklik */
+    background-color: #f8f9fa; /* Warna latar belakang default */
+    color: #333; /* Warna teks default */
+    font-size: 0.875rem; /* Ukuran font default */
+    transition: background-color 0.3s, color 0.3s; /* Transisi untuk efek hover */
+}
+
+/* Styling untuk tombol utama */
+.btn-primary {
+    background-color: var(--color-primary); /* Warna latar belakang tombol utama */
+    color: var(--color-white); /* Warna teks tombol utama */
+}
+
+/* Efek hover pada tombol */
+.btn:hover {
+    background-color: #e2e6ea; /* Warna latar belakang saat hover */
+    color: #000; /* Warna teks saat hover */
+}
+
+
+
+.right .request .action .btn {
+    background-color: #f8f9fa; /* Warna latar belakang tombol decline */
+    color: var(--color-primary); /* Warna teks tombol decline */
+}
+
+
+.customize-theme{
+    background:rgba(255, 255, 255, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    display: none;
+}
+
+.customize-theme .card{
+    background: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--card-border-radius);
+    width: 50%;
+}
+
+.customize-theme .font-size {
+    margin-top: 5rem;
+}
+
+.customize-theme .font-size > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--card-border-radius);
+}
+
+.customize-theme .choose-size {
+    background: var(--color-secondary);
+    height: 0.3rem;
+    width: 100%;
+    margin: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.customize-theme .choose-size span {
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-secondary);
+    border-radius: 50%; /* Seharusnya 50% untuk lingkaran sempurna */
+    cursor: pointer;
+}
+
+.customize-theme .choose-size span.active {
+    background: var(--color-primary);
+}
+
+.customize-theme .color{
+     margin-top: 2rem;
+}
+
+.customize-theme .choose-color{
+    background: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.customize-theme .choose-color span{
+    width: 2.2rem; /* perbaiki spasi di sini */
+    height: 2.2rem; /* perbaiki spasi di sini */
+    border-radius: 50%;
+}
+
+
+.customize-theme .choose-color span:nth-child(1) {
+    background: hsl(252, 75%, 60%);
+}
+.customize-theme .choose-color span:nth-child(2) {
+    background: hsl(52, 75%, 60%);
+}.customize-theme .choose-color span:nth-child(3) {
+    background: hsl(352, 75%, 60%);
+}.customize-theme .choose-color span:nth-child(4) {
+    background: hsl(152, 75%, 60%);
+}.customize-theme .choose-color span:nth-child(5) {
+    background: hsl(202, 75%, 60%);
+}
+.customize-theme .choose-color span.active {
+    border: 5px solid white;
+}
+
+.customize-theme .background {
+    margin-top: 2rem;
+}
+
+.customize-theme .choose-bg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+.customize-theme .choose-bg > div {
+    padding: var(--card-padding);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+
+
+.customize-theme .choose-bg > div.active {
+    border: 2px solid var(--color-primary);
+}
+
+.customize-theme .choose-bg .bg-1 {
+    background: white;
+    color: black;
+}
+
+.customize-theme .choose-bg .bg-2 {
+    background: hsl(252, 30%, 17%);
+    color: white;
+}
+
+.customize-theme .choose-bg .bg-3 {
+    background: hsl(252, 30%, 10%);
+    color: white;
+}
+
+.customize-theme .choose-bg > div span {
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--color-gray);
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .container{
+        width: 96%;
+    }
+
+    main .container {
+        grid-template-columns: 5rem auto 30vw;
+        gap: 1rem;
+    }
+    .left {
+        width: 5rem;
+        z-index: 5;
+    }
+    main .container .left .profile{
+        display: none;
+    }
+    .sidebar h3{
+        display: none;
+    }
+    .left .btn{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px){
+    nav .search-bar {
+        display: none;
+    }
+    main .container {
+        grid-template-columns: 0 auto 5rem;
+        gap: 0;
+    }
+
+    main .container .left {
+        grid-column: 3/4;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+
+    .left .notifications-popup {
+        position:absolute;
+        left: -20rem;
+        width: 20rem;
+
+    }
+
+    .left .notifications-popup::before {
+        display: absolute ;
+        top: 1.3rem;
+        left: calc(20rem - 0.6rem);
+        display: block;
+    }
+    
+    main .container .midle {
+        grid-column: 1/3;
+    }
+    main .container .right{
+        display : none;
+    }
+
+
+
+}
